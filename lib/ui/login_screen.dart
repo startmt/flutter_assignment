@@ -43,6 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
       autofocus: false,
       decoration: InputDecoration(
         icon: Icon(Icons.person),
+        labelText: 'User Id',
         hintText: 'User Id',
       ),
       onSaved: (username) => vEmail = username
@@ -53,6 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
       obscureText: true,
       decoration: InputDecoration(
         icon: Icon(Icons.lock),
+        labelText: 'Password',
         hintText: 'Password',
       ),
       validator: (value) {

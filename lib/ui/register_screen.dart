@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
   static String tag = 'register-screen';
-  
+
   @override
   _RegisterScreenState createState() => new _RegisterScreenState();
 }
@@ -12,10 +12,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String vPassword = '';
   String vRePassword = '';
   final _formKey = GlobalKey<FormState>();
-  void submitRegis(){
+  void submitRegis() {
     final FormState form = _formKey.currentState;
     form.save();
-    if (vEmail.isEmpty || vPassword.isEmpty || vRePassword.isEmpty){
+    if (vEmail.isEmpty || vPassword.isEmpty || vRePassword.isEmpty) {
       showDialog(
           context: context,
           builder: (context) {
@@ -24,8 +24,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             );
           });
       return;
-    }
-    else if(vEmail == "admin"){
+    } else if (vEmail == "admin") {
       showDialog(
           context: context,
           builder: (context) {
@@ -33,44 +32,41 @@ class _RegisterScreenState extends State<RegisterScreen> {
               content: Text('user นี้มีอยู่ใน ระบบแล้ว'),
             );
           });
-    }
-    else{
-       Navigator.pushNamed(context, "/");
+    } else {
+      Navigator.pushNamed(context, "/");
     }
   }
+
   @override
   Widget build(BuildContext context) {
     final txtRegisEmail = TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      autofocus: true,
-      decoration: InputDecoration(
-        icon: Icon(Icons.email),
-        labelText: 'Email',
-        hintText: 'Email',
-      ),
-      onSaved : (email) => vEmail = email
-    );
+        keyboardType: TextInputType.emailAddress,
+        autofocus: true,
+        decoration: InputDecoration(
+          icon: Icon(Icons.email),
+          labelText: 'Email',
+          hintText: 'Email',
+        ),
+        onSaved: (email) => vEmail = email);
 
     final txtPassword = TextFormField(
-      autofocus: false,
-      obscureText: true,
-      decoration: InputDecoration(
-        icon: Icon(Icons.lock),
-        labelText: 'Password',
-        hintText: 'Password',
-      ),
-      onSaved : (password) => vPassword = password
-    );
+        autofocus: false,
+        obscureText: true,
+        decoration: InputDecoration(
+          icon: Icon(Icons.lock),
+          labelText: 'Password',
+          hintText: 'Password',
+        ),
+        onSaved: (password) => vPassword = password);
     final txtConfirmPassword = TextFormField(
-      autofocus: false,
-      obscureText: true,
-      decoration: InputDecoration(
-        icon: Icon(Icons.lock),
-        labelText: 'Confirm Password',
-        hintText: 'Confirm Password',
-      ),
-      onSaved : (confirmPassword) => vRePassword = confirmPassword
-    );
+        autofocus: false,
+        obscureText: true,
+        decoration: InputDecoration(
+          icon: Icon(Icons.lock),
+          labelText: 'Confirm Password',
+          hintText: 'Confirm Password',
+        ),
+        onSaved: (confirmPassword) => vRePassword = confirmPassword);
 
     final registerButton = Padding(
       padding: EdgeInsets.symmetric(vertical: 5.0),
@@ -90,14 +86,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Form(
           key: _formKey,
           child: ListView(
-            padding: EdgeInsets.only(top:20.0, left: 24.0, right: 24.0),
-           children: <Widget>[
+            padding: EdgeInsets.only(top: 20.0, left: 24.0, right: 24.0),
+            children: <Widget>[
               txtRegisEmail,
-             txtPassword,
-             txtConfirmPassword,
+              txtPassword,
+              txtConfirmPassword,
               SizedBox(height: 15.0),
               registerButton,
-           ],
+            ],
           ),
         ),
       ),
